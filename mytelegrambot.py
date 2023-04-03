@@ -1,9 +1,7 @@
 import telebot
 import requests
-#from newsapi import NewsApiClient
 # initializing the bot
-bot = telebot.TeleBot('5624554239:AAGGEcaxCpo2bC6YmRBn7q5U92aURK9evGA')
-#newsapi = NewsApiClient(api_key='57123b0254404a6e95710adae0bacdc7')
+bot = telebot.TeleBot('{Your API key in t.me/botfather}')
 
 # "/start" processing
 @bot.message_handler(commands=['start'])
@@ -16,8 +14,8 @@ def start_message(message):
 # "Weather" button
 @bot.message_handler(func=lambda message: message.text == '⛅Forecast⛅')
 def weather_message(message):
-    city = 'Rybinsk' # <--You can write ur town here
-    url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid=6a40ac736e89ba5919b987ace3c2f64d&units=metric'
+    city = 'New York City' # <--You can write ur town here
+    url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid={Your API key}&units=metric'
     response = requests.get(url).json()
     weather = response['weather'][0]['description']
     temp = response['main']['temp']
@@ -35,7 +33,7 @@ def currency_message(message):
 # "News" button
 @bot.message_handler(func=lambda message: message.text == '📰News📰(beta)')
 def news_message(message):
-    url = 'https://newsapi.org/v2/top-headlines?country=ru&category=technology&apiKey=57123b0254404a6e95710adae0bacdc7'
+    url = 'https://newsapi.org/v2/top-headlines?country=ru&category=technology&apiKey={Your API key}'
     response = requests.get(url).json()
     articles = response['articles']
     for article in articles:
