@@ -9,7 +9,6 @@ bot = telebot.TeleBot('Your Token')
 @bot.message_handler(commands=['start'])
 def start_message(message):
     keyboard = telebot.types.ReplyKeyboardMarkup(True, False)
-    #keyboard.row('⛅Forecast⛅','🏦Сurrency rate🏦', '📰News📰, '🪙Crypto🪙')
     keyboard.row('📰', '🪙', '⛅', '🏦','🔄')
     
     bot.send_message(message.chat.id, f"🇷🇺 🇺🇦 🇧🇾 Приветствую тебя! 🇦🇿 🇰🇿 🇦🇲 \nЯ твой помощник в быстром поиске нужной информации!\nБот совершенствуется, поэтому перед каждой работой:\nпроверяйте обновления в боте командой - /start\nобязательно зайди в телеграмм канал с обновами - https://t.me/lightSearch_inf\nбольшое спасибо🙏\n \n🇬🇧 🇺🇸 Greetings to you! \nI am your assistant in a quick search for the right information!\nThe bot is improving, so before each job:\ncheck for updates in the bot with the command - /start\nfollow telegram channel with updates - https://t.me/lightSearch_inf\nbig bless🙏 \n \nversion 1.0.3", reply_markup=keyboard)
