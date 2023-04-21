@@ -3,7 +3,7 @@ import requests
 import time
 
 # initializing the bot
-bot = telebot.TeleBot('5624554239:AAGntNTOkqz3qYkUUhdl9BMgAJOxPU3Cpas')
+bot = telebot.TeleBot('Your Token')
 
 # "/start" processing
 @bot.message_handler(commands=['start'])
@@ -22,7 +22,7 @@ def weather_message(message):
 
 def get_weather(message):
     city = message.text
-    url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid=6a40ac736e89ba5919b987ace3c2f64d&units=metric'
+    url = f'http://api.openweathermap.org/data/2.5/weather?q={city}&appid=Your Token=metric'
     response = requests.get(url).json()
     if response['cod'] == '404':
         bot.send_message(message.chat.id, f'City {city} not found❌')
@@ -52,7 +52,7 @@ def currency_message(message):
 # "News" button
 @bot.message_handler(func=lambda message: message.text == '📰')
 def news_message(message):
-    url_api = 'https://newsapi.org/v2/top-headlines?country=ru&category=technology&apiKey=57123b0254404a6e95710adae0bacdc7'
+    url_api = 'https://newsapi.org/v2/top-headlines?country=ru&category=technology&apiKey=Your Token'
     response = requests.get(url_api).json()
     articles = response['articles']
     for article in articles:
